@@ -1,0 +1,112 @@
+<div class="text-center mb-2">
+  <h2>Hello Hero Form</h2>
+  <h4>{{ model | json }}</h4>
+</div>
+<div class="row">
+  <div class="float-right col-4">
+    <table class="table table-bordered">
+      <tr>
+        <th>Valid</th>
+        <th>Touched</th>
+        <th>Dirty</th>
+        <th>IsSubmit</th>
+      </tr>
+      <tr>
+        <td>{{ name.valid }}</td>
+        <td>{{ name.touched }}</td>
+        <td>{{ name.dirty }}</td>
+        <td>{{ isSubmit }}</td>
+      </tr>
+    </table>
+    <h4>Minlength</h4>
+    <table class="table table-bordered mt-2">
+      <tr>
+        <th>Actual</th>
+        <th>Required</th>
+      </tr>
+      <tr>
+        <td>{{ name.errors.minlength && name.errors.minlength.actualLength }}</td>
+        <td>{{ name.errors.minlength && name.errors.minlength.requiredLength }}</td>
+      </tr>
+    </table>
+    <h4>Pattern 1</h4>
+    <table class="table table-bordered mt-2">
+      <tr>
+        <th>Actual</th>
+        <th>Required</th>
+      </tr>
+      <tr>
+        <td>{{ name.errors.pattern && name.errors.pattern.actualValue }}</td>
+        <td>{{ name.errors.pattern && name.errors.pattern.requiredPattern }}</td>
+      </tr>
+    </table>
+    <h4>Pattern 2 - 3 custom</h4>
+    <table class="table table-bordered mt-2">
+      <tr>
+        <th>pattern2</th>
+        <th>pattern3</th>
+      </tr>
+      <tr>
+        <td>{{ name.errors && name.errors.pattern2 }}</td>
+        <td>{{ name.errors && name.errors.pattern3 }}</td>
+      </tr>
+    </table>
+    <table class="table table-bordered mt-2">
+      <tr>
+        <th>Reqired</th>
+      </tr>
+      <tr>
+        <td>{{ name.errors && name.errors.required }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <form class="floaf-left col-8" [formGroup]="formGroup">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input id="name" formControlName="name" [(ngModel)]="model.name" class="form-control" type="text" [ngClass]="{
+        'is-valid': (name.valid && (name.touched || isSubmit)),
+        'is-invalid': (name.invalid && (name.touched || isSubmit))}">
+      <div class="invalid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" formControlName="address" [(ngModel)]="model.address" class="form-control" type="text" [ngClass]="{
+        'is-valid': (address.valid && (address.touched || isSubmit)),
+        'is-invalid': (address.invalid && (address.touched || isSubmit))}">
+      <div class="invalid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" [(ngModel)]="model.email" class="form-control" type="text" [ngClass]="{
+        'is-valid': (email.valid && (email.touched || isSubmit)),
+        'is-invalid': (email.invalid && (email.touched || isSubmit))}">
+      <div class="invalid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input id="phone" formControlName="phone" [(ngModel)]="model.phone" class="form-control" type="text" [ngClass]="{
+        'is-valid': (phone.valid && (phone.touched || isSubmit)),
+        'is-invalid': (phone.invalid && (phone.touched || isSubmit))}">
+      <div class="invalid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sex">Sex</label>
+      <input id="sex" formControlName="sex" [(ngModel)]="model.sex" class="form-control" type="text" [ngClass]="{
+        'is-valid': (sex.valid && (sex.touched || isSubmit)),
+        'is-invalid': (sex.invalid && (sex.touched || isSubmit))}">
+      <div class="invalid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="onSubmit()">Submmit</button>
+  </form>
+</div>
